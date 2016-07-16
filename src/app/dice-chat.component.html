@@ -1,3 +1,10 @@
 <h1>{{title}}</h1>
 
-<p>{{ (item | async)?.value }}
+<ul>
+  <li *ngFor="let message of messages | async">
+    {{ message.text }}
+  </li>
+</ul>
+
+<input type="text" #newMessage />
+<button (click)="send(newMessage.value)">Send</button>

@@ -1,19 +1,27 @@
 import { Component } from '@angular/core';
-import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import { Observable } from 'rxjs/Observable';
+
+import { Message } from './shared/message';
+import { FirebaseService } from './shared/firebase.service';
 
 @Component({
   moduleId: module.id,
   selector: 'dice-chat-root',
   templateUrl: 'dice-chat.component.html',
-  styleUrls: ['dice-chat.component.css']
+  styleUrls: ['dice-chat.component.css'],
+  providers: [
+    FirebaseService
+  ]
 })
 export class DiceChatComponent {
   title = 'Dice Chat';
-  item: FirebaseObjectObservable<any[]>;
+  messages: Observable<any>;
 
-  constructor(angularFire: AngularFire) {
-    this.item = angularFire.database.object('/item');
+  constructor(private firebaseService: FirebaseService) {
+    this.messages = firebaseService.getMessages();
+  }
 
-    console.log(this.item);
+  send(newMessage: string) {
+    this.firebaseService.saveMessage(new Message(newMessage));
   }
 }
