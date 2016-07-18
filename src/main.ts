@@ -3,7 +3,6 @@ import { enableProdMode } from '@angular/core';
 import { FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
 
 import { DiceChatComponent, environment } from './app/';
-import { FIREBASE_CONFIG } from './app/firebase.config';
 
 if (environment.production) {
   enableProdMode();
@@ -11,5 +10,10 @@ if (environment.production) {
 
 bootstrap(DiceChatComponent, [
   FIREBASE_PROVIDERS,
-  defaultFirebase(FIREBASE_CONFIG)
+  defaultFirebase({
+    apiKey: 'AIzaSyCYgEe_PXUDFxTCDUZr_VHoKFgsRfHVIjk',
+    authDomain: 'dice-chat.firebaseapp.com',
+    databaseURL: 'https://dice-chat.firebaseio.com',
+    storageBucket: 'dice-chat.appspot.com'
+  })
 ]);

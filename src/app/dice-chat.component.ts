@@ -22,6 +22,8 @@ export class DiceChatComponent {
   }
 
   send(newMessage: string) {
-    this.firebaseService.saveMessage(new Message(newMessage));
+    let author = 'Cody';
+
+    this.firebaseService.saveMessage(new Message(newMessage, author));
   }
 }
