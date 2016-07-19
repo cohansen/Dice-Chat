@@ -6,9 +6,12 @@ import {
   expect, it, xit,
   async, inject
 } from '@angular/core/testing';
-import { DiceChatComponent } from './dice-chat.component';
+import { FIREBASE_PROVIDERS, AngularFire } from 'angularfire2';
 
-beforeEachProviders(() => [DiceChatComponent]);
+import { DiceChatComponent } from './dice-chat.component';
+import { FirebaseService } from './shared/firebase.service';
+
+beforeEachProviders(() => [DiceChatComponent, FirebaseService, FIREBASE_PROVIDERS, AngularFire]);
 
 describe('App: DICECHAT', () => {
   it('should create the app',

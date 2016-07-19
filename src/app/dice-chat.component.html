@@ -1,14 +1,23 @@
-<h1>{{title}}</h1>
+<div class="container">
+  <h1>{{title}}</h1>
 
-<div class="message-container" *ngFor="let message of messages | async">
-  <span class="message-info">
-    <strong>{{ message.author }}</strong>
-    {{ (message.time | date:'shortTime') }}
-  </span>
-  <span class="message-content">
-    {{ message.text }}
-  </span>
+  <div class="message-container" *ngFor="let message of messages | async">
+    <span class="message-info">
+      <strong>{{ message.author }}</strong>
+      {{ (message.time | date:'shortTime') }}
+    </span>
+    <span class="message-content">
+      {{ message.text }}
+    </span>
+  </div>
+
+  <input type="text" #newMessage />
+  <button (click)="send(newMessage.value)">Send</button>
+
+  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    </div>
+  </div>
 </div>
-
-<input type="text" #newMessage />
-<button (click)="send(newMessage.value)">Send</button>
+</div>

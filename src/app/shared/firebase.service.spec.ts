@@ -6,6 +6,7 @@ import {
   expect, it, xit,
   async, inject
 } from '@angular/core/testing';
+
 import { FirebaseService } from './firebase.service';
 
 describe('Firebase Service', () => {
