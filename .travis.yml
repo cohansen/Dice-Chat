@@ -8,8 +8,10 @@ addons:
   apt:
     sources:
       - google-chrome
+      - ubuntu-toolchain-r-test
     packages:
       - google-chrome-stable
+      - g++-4.9
 
 cache:
   directories:
