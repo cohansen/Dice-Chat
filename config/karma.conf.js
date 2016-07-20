@@ -28,7 +28,6 @@ module.exports = function (config) {
       { pattern: 'config/karma-test-shim.js', included: true, watched: true },
 
       { pattern: 'dist/vendor/firebase/firebase.js', included: true, watched: false },
-      { pattern: 'dist/vendor/angularfire2', included: true, watched: false },
 
       // Distribution folder.
       { pattern: 'dist/**/*', included: false, watched: true }

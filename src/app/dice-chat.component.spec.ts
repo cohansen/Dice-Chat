@@ -6,12 +6,14 @@ import {
   expect, it, xit,
   async, inject
 } from '@angular/core/testing';
-import { FIREBASE_PROVIDERS, AngularFire } from 'angularfire2';
+import { Provider } from '@angular/core';
+import { FIREBASE_PROVIDERS, FirebaseAppConfig, defaultFirebase, AngularFire } from 'angularfire2';
 
 import { DiceChatComponent } from './dice-chat.component';
 import { FirebaseService } from './shared/firebase.service';
+import { instantiateFirebase } from './shared/firebase.config';
 
-beforeEachProviders(() => [DiceChatComponent, FirebaseService, FIREBASE_PROVIDERS, AngularFire]);
+beforeEachProviders(() => [DiceChatComponent, FirebaseService, FIREBASE_PROVIDERS, instantiateFirebase(), AngularFire]);
 
 describe('App: DICECHAT', () => {
   it('should create the app',
@@ -19,8 +21,11 @@ describe('App: DICECHAT', () => {
     expect(app).toBeTruthy();
   }));
 
-  it('should have as title \'Dice Chat\'',
-      inject([DiceChatComponent], (app: DiceChatComponent) => {
-    expect(app.title).toEqual('Dice Chat');
-  }));
+  describe('defaultFirebase', () => {
+    it('should create a provider', () => {
+      let provider = instantiateFirebase();
+
+      expect(provider instanceof Provider).toBe(true);
+    });
+  });
 });
